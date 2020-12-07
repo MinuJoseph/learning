@@ -32,17 +32,51 @@ namespace BakedInHeaven.API.Controllers
             return true;
 
         }
+        
+
         [Route("products/{id}")]
         [HttpDelete]
-        public bool DeleteProducts(Products id)
+        public bool Delete(int id)
         {
-            using var dbContext = new BakeryDbContext();
-            dbContext.Remove(dbContext.Products.Single(a => a.Id == 1));
-            dbContext.SaveChanges();
+            using(BakeryDbContext dbContext = new BakeryDbContext())
+            {
+                
+                dbContext.Products.Remove(dbContext.Products.FirstOrDefault(e => e.Id == id));
+                dbContext.SaveChanges();
 
-            return true;
-
+                return true;
+            }
         }
+
+        [Route("products/{id}")]
+        [HttpPut]
+        public bool Update(int id, [FromBody] Products products)
+        {
+            using (BakeryDbContext dbContext = new BakeryDbContext())
+            {
+                var a = dbContext.Products.FirstOrDefault(e => e.Id == id);
+
+                a.Id = products.Id;
+                a.Name = products.Name;
+                a.Quantity = products.Quantity;
+                a.Price = products.Price;
+                a.WeightInGrams = products.WeightInGrams;
+                a.Kcal = products.Kcal;
+                a.IsVeg = products.IsVeg;
+                a.IsSpecial = products.IsSpecial;
+                a.AvailableDate = products.AvailableDate;
+
+
+                dbContext.SaveChanges();
+
+                return true;
+            }
+        }
+
+
+
+
+
 
 
     }
