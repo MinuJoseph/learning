@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BakedInHeaven.API.Models;
 using BakedInHeaven.API.Context;
+using Microsoft.AspNetCore.Http;
 
 namespace BakedInHeaven.API.Controllers
 {
@@ -19,6 +20,19 @@ namespace BakedInHeaven.API.Controllers
             return dbContext.Products.ToList();
 
         }
+
+        [Route("products/{id}")]
+        [HttpGet]
+        public ActionResult<Products> GetProduct(int id)
+        {
+            using var dbContext = new BakeryDbContext();
+            var Products = dbContext.Products.Find(id);
+            return Products;
+
+        }
+
+
+
 
         [Route("products")]
         [HttpPost]
