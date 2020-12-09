@@ -7,6 +7,11 @@ namespace BakedInHeaven.DataAccess.Repositories
     {
         List<Products> GetAllProducts();
         void Add(Products productEntity);
+
+        bool Delete(int id);
+
+        bool Update(Products productEntity, int id);
+        
     }
        
 }

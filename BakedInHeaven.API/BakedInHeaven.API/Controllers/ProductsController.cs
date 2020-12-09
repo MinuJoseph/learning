@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BakedInHeaven.BusinessService;
 using BakedInHeaven.BusinessService.Dtos;
+using BakedInHeaven.DataAccess.Entities;
 
 namespace BakedInHeaven.API.Controllers
 {
@@ -17,6 +18,7 @@ namespace BakedInHeaven.API.Controllers
         {
             _productsService = productsService;
         }
+        [Route("products")]
         [HttpGet]
         public IEnumerable<ProductDto> GetAllProducts()
         {
@@ -24,10 +26,27 @@ namespace BakedInHeaven.API.Controllers
             return _productsService.GetAllProducts();
         }
 
+        [Route("products")]
         [HttpPost]
         public void AddProduct(ProductDto product)
         {
             _productsService.AddProduct(product);
+        }
+
+
+        [Route("products/{id}")]
+        [HttpDelete]
+
+        public void DeleteProduct(int id)
+        {
+            _productsService.Delete(id);
+        }
+
+        [Route("products/{id}")]
+        [HttpPut]
+        public void UpdateProduct(Products product, int id)
+        {
+            _productsService.UpdateProduct(product, id);
         }
     }
 }

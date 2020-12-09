@@ -17,6 +17,7 @@ namespace BakedInHeaven.BusinessService
             _productsRepository = productsRepository;
         }
 
+
         public void AddProduct(ProductDto product)
         {
             var productEntity = new Products
@@ -53,5 +54,16 @@ namespace BakedInHeaven.BusinessService
                 WeightInGrams = p.WeightInGrams
             });
         }
+
+        public void Delete(int id)
+        {
+            var products = _productsRepository.Delete(id);
+        }
+        public void UpdateProduct(Products products, int id)
+        {
+            bool c = _productsRepository.Update(products, id);
+
+        }
+
     }
 }
