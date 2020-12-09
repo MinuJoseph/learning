@@ -28,7 +28,7 @@ namespace BakedInHeaven.API.Controllers
 
         [Route("products")]
         [HttpPost]
-        public void AddProduct(ProductDto product)
+        public void AddProduct(Products product)
         {
             _productsService.AddProduct(product);
         }

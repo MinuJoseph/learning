@@ -10,8 +10,11 @@ namespace BakedInHeaven.DataAccess.Repositories
 
         bool Delete(int id);
 
-        bool Update(Products productEntity, int id);
-        
+        bool Update(Products products, int id);
+
+        List<Products> GetProducts();
+
+
     }
        
 }
