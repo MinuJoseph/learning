@@ -55,6 +55,13 @@ namespace BakedInHeaven.API
 
             app.UseRouting();
 
+            app.UseHttpsRedirection();
+
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

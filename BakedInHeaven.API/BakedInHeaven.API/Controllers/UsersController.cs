@@ -30,7 +30,7 @@ namespace BakedInHeaven.API.Controllers
             [HttpPost]
             public void AddUser(UserDto user)
             {
-               _userService.AddUser(user);
+                _userService.AddUser(user);
                 
             }
 
