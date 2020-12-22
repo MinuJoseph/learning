@@ -84,11 +84,9 @@ namespace BakedInHeaven.DataAccess.Repositories
                     return false;
                 }
             }
-
-        public List<Products> GetProducts()
+        public List<Products> GetProductsByDate(DateTime currentDate)
         {
-            return _dbContext.Products.ToList();
-
+            return _dbContext.Products.Where(x => x.AvailableDate.Date == currentDate).ToList();
         }
 
     }

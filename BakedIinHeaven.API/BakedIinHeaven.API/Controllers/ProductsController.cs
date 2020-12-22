@@ -31,19 +31,25 @@ namespace BakedInHeaven.API.Controllers
 
         }
 
-
+       
 
 
         [Route("products")]
         [HttpPost]
-        public bool CreateProducts(Products products)
+        public ActionResult CreateProducts(Products products)
         {
             using var dbContext = new BakeryDbContext();
 
             dbContext.Products.Add(products);
             dbContext.SaveChanges();
+            var response = dbContext.Add(products);
+            if (!string.IsNullOrEmpty(response))
+            {
+                return Ok();
+            }
+            return BadRequest(response);
 
-            return true;
+            
 
         }
         

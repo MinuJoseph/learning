@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using BakedInHeaven.DataAccess.Entities;
 
 namespace BakedInHeaven.DataAccess.Repositories
@@ -11,10 +12,7 @@ namespace BakedInHeaven.DataAccess.Repositories
         bool Delete(int id);
 
         bool Update(Products products, int id);
-
-        List<Products> GetProducts();
-
-
+        List<Products> GetProductsByDate(DateTime currentDate);
     }
        
 }

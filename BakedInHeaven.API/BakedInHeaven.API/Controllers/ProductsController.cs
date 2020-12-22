@@ -28,9 +28,14 @@ namespace BakedInHeaven.API.Controllers
 
         [Route("products")]
         [HttpPost]
-        public void AddProduct(Products product)
+        public ActionResult AddProduct(ProductDto product)
         {
-            _productsService.AddProduct(product);
+           var response = _productsService.AddProduct(product);
+            if (!string.IsNullOrEmpty(response))
+            {
+                return Ok();
+            }
+            return BadRequest(response);
         }
 
 
@@ -40,6 +45,7 @@ namespace BakedInHeaven.API.Controllers
         public void DeleteProduct(int id)
         {
             _productsService.Delete(id);
+           
         }
 
         [Route("products/{id}")]

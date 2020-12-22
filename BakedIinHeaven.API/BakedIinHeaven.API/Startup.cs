@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.Http;
+using System.Web.Http.Cors;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +19,10 @@ namespace BakedIinHeaven.API
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            var config = new HttpConfiguration();
+            var cors = new EnableCorsAttribute("http://localhost:5901", headers:"*",methods: "*");
+            config.EnableCors(cors);
+              
         }
 
         public IConfiguration Configuration { get; }
@@ -36,6 +42,13 @@ namespace BakedIinHeaven.API
             }
 
             app.UseRouting();
+
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+
+            app.UseHttpsRedirection();
 
 
             app.UseEndpoints(endpoints =>

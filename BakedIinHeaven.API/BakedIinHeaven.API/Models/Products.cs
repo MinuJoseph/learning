@@ -12,13 +12,13 @@ namespace BakedInHeaven.API.Models
 
         public string Name { get; set; }
 
-        public int Quantity { get; set; }
+        public string Quantity { get; set; }
 
-        public float Price { get; set; }
+        public string Price { get; set; }
 
-        public float WeightInGrams { get; set; }
+        public string WeightInGrams { get; set; }
 
-        public float Kcal { get; set; }
+        public string Kcal { get; set; }
 
         public bool IsVeg { get; set; }
 

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace BakedInHeaven.DataAccess.Entities
+namespace BakedInHeaven.BusinessService.Dtos
 {
-   public class Users
+   public class UserDto
     {
         public int Id { get; set; }
         public string Name { get; set; }
