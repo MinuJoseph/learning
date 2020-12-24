@@ -40,6 +40,10 @@ namespace BakedInHeaven.API
             services.AddScoped<IProductsRepository, ProductsRepository>();
             services.AddDbContext<ApplicationDbContext>(options
                => options.UseNpgsql("Host=localhost;Database=bakerydb;Username=postgres;Password=exp@123"));
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddDbContext<ApplicationDbContext>(options
+               => options.UseNpgsql("Host=localhost;Database=bakerydb;Username=postgres;Password=exp@123"));
 
         }
 
